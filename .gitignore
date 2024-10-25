@@ -6,7 +6,7 @@
 .pnp.js
 
 # env
-.env
+KINOPOISK_KEY.js
 
 # testing
 /coverage

@@ -42,7 +42,7 @@ const Navbar = () => {
               <Box sx={{ width: "250px", height: "100vh", bgcolor: `${theme.light_main}` }}
                 role="presentation"
                 onClick={handleDrawerToggle}>
-                <List sx={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+                <List sx={{ height: "100vh", pt: "10%", pb: "50%", display: "flex", flexDirection: "column", justifyContent: "space-evenly" }}>
                   {NAVBAR_LIST.map((item, i) => (
                     <Link
                       component={RouterLink}
@@ -61,7 +61,6 @@ const Navbar = () => {
               </Box>
             </Drawer>
 
-
             : NAVBAR_LIST.map((item, i) => {
               return (
                 <Link
@@ -70,7 +69,10 @@ const Navbar = () => {
                   component={RouterLink}
                   sx={{ textDecoration: "none", color: theme.white }}
                 >
-                  <Typography variant="h6" component="div">{item.type}</Typography>
+                  <Typography
+                    sx={{ '&:hover': { color: theme.pale_purple }, transition: ".2s ease-in-out" }}
+                    variant="h6"
+                    component="div">{item.type}</Typography>
                 </Link>
               )
             })}

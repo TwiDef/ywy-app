@@ -1,10 +1,9 @@
 import React from 'react';
-import { Stack, Typography, Divider, Link, useMediaQuery } from '@mui/material';
+import { Stack, Typography, Divider, Link } from '@mui/material';
 
 import { theme } from '../../../theme';
 
 const Footer = () => {
-  const isMobile = useMediaQuery('(max-width:768px)');
 
   return (
     <Stack

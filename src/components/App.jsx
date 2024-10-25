@@ -5,8 +5,7 @@ import {
 } from "react-router-dom";
 
 import Layout from "./Layout";
-
-import { theme } from "./../theme";
+import Home from "./pages/Home/Home";
 
 function App() {
 
@@ -16,8 +15,8 @@ function App() {
       element: <Layout />,
       children: [
         {
-          path: "/example",
-          element: <div>Example page</div>,
+          path: "/",
+          element: <Home />,
         },
       ]
     }
