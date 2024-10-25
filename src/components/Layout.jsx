@@ -10,7 +10,7 @@ const Layout = () => {
   return (
     <Box sx={{ bgcolor: `${theme.dark_main}` }}>
       <Container fixed sx={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
-        <Box sx={{ p: 6 }} />
+        <Box sx={{ p: 4 }} />
         <Navbar />
         <Outlet />
         <Footer />
