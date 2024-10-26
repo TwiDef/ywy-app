@@ -1,0 +1,8 @@
+.bear-react-carousel__slide-item {
+    opacity: 0.3;
+}
+
+div[data-active] {
+    opacity: 1;
+}
+
