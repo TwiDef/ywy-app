@@ -1,5 +1,6 @@
 import React from 'react';
-import { Box, Button, Divider, Rating, Stack, Typography } from '@mui/material';
+import { Box, Button, Divider, Link, Rating, Stack, Typography } from '@mui/material';
+import { Link as RouterLink } from 'react-router-dom';
 import { theme } from '../../../../theme';
 
 const DesktopSlide = ({ film }) => {
@@ -7,7 +8,7 @@ const DesktopSlide = ({ film }) => {
   return (
     <Stack key={film.kinopoiskId} sx={{ display: "flex", flexDirection: "row", height: "100%" }}>
       <Box sx={{ width: "50%", height: "400px" }}>
-        <img src={film.posterUrlPreview} alt="poster" style={{ width: "100%" }} />
+        <img src={film.posterUrlPreview} alt="poster" style={{ width: "100%", height: "100%" }} />
       </Box>
       <Stack
         sx={{
@@ -47,15 +48,23 @@ const DesktopSlide = ({ film }) => {
               precision={0.5}
               value={film.ratingKinopoisk / 2} />
           </Box>
+
           <Box sx={{ margin: "0 auto" }}>
-            <Button size="small" sx={{
-              fontWeight: "bold",
-              fontSize: "14px",
-              transition: ".1s ease-in-out",
-              "&:hover": { scale: 1.1 },
-              bgcolor: theme.pale_purple, color: theme.dark_main
-            }} variant="contained">смотреть</Button>
+            <Link
+              to={`/movies/${film.kinopoiskId}`}
+              component={RouterLink}>
+              <Button size="small" sx={{
+                fontWeight: "bold",
+                fontSize: "14px",
+                transition: ".1s ease-in-out",
+                "&:hover": { scale: 1.1 },
+                bgcolor: theme.pale_purple, color: theme.dark_main
+              }} variant="contained">
+                смотреть
+              </Button>
+            </Link>
           </Box>
+
           <Stack
             sx={{
               display: "flex",

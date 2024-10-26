@@ -1,8 +1,14 @@
-.bear-react-carousel__slide-item {
+.desktop-carousel .bear-react-carousel__slide-item {
     opacity: 0.3;
 }
 
-div[data-active] {
+.desktop-carousel div[data-active] {
     opacity: 1;
+}
+
+.tablet-carousel .bear-react-carousel__nav-button {
+    width: 50px;height: 50px;
+    background-color: #313131;
+    opacity: .9;
 }
 

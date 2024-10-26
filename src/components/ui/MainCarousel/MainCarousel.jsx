@@ -6,10 +6,11 @@ import { useMediaQuery } from '@mui/material';
 
 import DesktopSlide from './DesktopSlide/DesktopSlide';
 import TabletSlide from './TabletSlide/TabletSlide';
+import MobileSlide from './MobileSlide/MobileSlide';
+import Loader from '../Loader/Loader';
 
 import 'bear-react-carousel/dist/index.css';
 import './MainCarousel.css';
-
 
 const MainCarousel = () => {
   const isDesktop = useMediaQuery('(min-width:1200px)');
@@ -28,18 +29,25 @@ const MainCarousel = () => {
     if (isTablet) {
       return <TabletSlide film={film} />
     }
+    if (isMobile) {
+      return <MobileSlide film={film} />
+    }
   });
+
+  if (!isLoading) {
+    return <Loader />
+  }
 
   /* console.log(`desktop:${isDesktop}, tablet:${isTablet}, mobile:${isMobile}`) */
 
   if (data && isDesktop) {
     return (
       <BearCarousel
+        className="desktop-carousel"
         data={films}
         width="100%"
         isEnableNavButton={true}
         isEnableLoop={true}
-        /*   isDebug */
         slidesPerView={2}
         isCenteredSlides={true}
         moveEffect={{
@@ -53,11 +61,11 @@ const MainCarousel = () => {
   if (data && isTablet) {
     return (
       <BearCarousel
+        className="tablet-carousel"
         data={films}
         width="100%"
         isEnableNavButton={true}
         isEnableLoop={true}
-        /*   isDebug */
         slidesPerView={3}
         isCenteredSlides={true}
         breakpoints={{
@@ -69,6 +77,26 @@ const MainCarousel = () => {
           }
         }}
       />
+    )
+  }
+
+  if (data && isMobile) {
+    return (
+      <BearCarousel
+        className="tablet-carousel"
+        data={films}
+        height="500px"
+        width="100%"
+        isEnableNavButton={true}
+        isEnableLoop={true}
+        slidesPerView={1}
+        isCenteredSlides={false}
+        breakpoints={{
+          500: {
+            height: "450px",
+            slidesPerView: 2
+          }
+        }} />
     )
   }
 };
