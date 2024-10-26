@@ -2,7 +2,8 @@ import React from 'react';
 import { Box, Button, Divider, Rating, Stack, Typography } from '@mui/material';
 import { theme } from '../../../../theme';
 
-const MainSlide = ({ film }) => {
+const DesktopSlide = ({ film }) => {
+
   return (
     <Stack key={film.kinopoiskId} sx={{ display: "flex", flexDirection: "row", height: "100%" }}>
       <Box sx={{ width: "50%", height: "400px" }}>
@@ -55,7 +56,13 @@ const MainSlide = ({ film }) => {
               bgcolor: theme.pale_purple, color: theme.dark_main
             }} variant="contained">смотреть</Button>
           </Box>
-          <Stack sx={{ display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "center", mt: 1 }}>
+          <Stack
+            sx={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "space-between",
+              alignItems: "center", mt: 1
+            }}>
             <Button
               href={`https://www.kinopoisk.ru/film/${film.kinopoiskId}/`}
               target="_black"
@@ -83,9 +90,4 @@ const MainSlide = ({ film }) => {
   );
 };
 
-export default MainSlide;
-
-/* 
-https://www.kinopoisk.ru/film/535341/
-https://www.imdb.com/title/tt17526714/
-*/
+export default DesktopSlide;
