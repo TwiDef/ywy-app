@@ -12,7 +12,7 @@ const TabletSlide = ({ film }) => {
       component={RouterLink}>
       <Stack
         onClick={() => console.log(film)}
-        sx={{ maxHeight: "400px", height: "100%", p: 3 }}>
+        sx={{ height: "100%", p: 3 }}>
         <img
           style={{ width: "100%", height: "300px", position: "relative" }}
           src={film.posterUrlPreview} alt={film.nameOriginal} />

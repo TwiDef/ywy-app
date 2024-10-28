@@ -1,0 +1,10 @@
+.mini-carousel .bear-react-carousel__nav-button {
+    background-color: #100e19;
+    opacity: .9;
+}
+
+.mini-carousel .bear-react-carousel__nav-group>.bear-react-carousel__nav-next-button,
+.mini-carousel .bear-react-carousel__nav-group>.bear-react-carousel__nav-prev-button {
+    top: -20px;
+}
+

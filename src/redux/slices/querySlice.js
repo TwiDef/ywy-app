@@ -1,6 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
+  genreId: "",
+  order: "NUM_VOTE",
+  type: "",
   page: 1,
 }
 

@@ -2,12 +2,13 @@ import React from 'react';
 import BearCarousel, { moveEffectFn } from 'bear-react-carousel';
 import { filmCollectionType } from '../../../constants';
 import { useGetFilmCollectionQuery } from '../../../services/kinopoiskApi';
-import { useMediaQuery } from '@mui/material';
+import { Box, useMediaQuery } from '@mui/material';
 
 import DesktopSlide from './DesktopSlide/DesktopSlide';
 import TabletSlide from './TabletSlide/TabletSlide';
 import MobileSlide from './MobileSlide/MobileSlide';
 import Loader from '../Loader/Loader';
+import ErrorMessage from '../ErrorMessage/ErrorMessage';
 
 import 'bear-react-carousel/dist/index.css';
 import './MainCarousel.css';
@@ -17,7 +18,7 @@ const MainCarousel = () => {
   const isTablet = useMediaQuery('(max-width:1200px) and (min-width:768px)');
   const isMobile = useMediaQuery('(max-width:768px)')
 
-  const { data, error, isLoading } = useGetFilmCollectionQuery({
+  const { data, isError, isLoading } = useGetFilmCollectionQuery({
     type: filmCollectionType.TOP_POPULAR_MOVIES,
     page: 1
   })
@@ -34,27 +35,33 @@ const MainCarousel = () => {
     }
   });
 
-  if (!isLoading) {
+  if (isLoading) {
     return <Loader />
   }
 
-  /* console.log(`desktop:${isDesktop}, tablet:${isTablet}, mobile:${isMobile}`) */
+  if (isError) {
+    return <ErrorMessage />
+  }
 
   if (data && isDesktop) {
     return (
-      <BearCarousel
-        className="desktop-carousel"
-        data={films}
-        width="100%"
-        isEnableNavButton={true}
-        isEnableLoop={true}
-        slidesPerView={2}
-        isCenteredSlides={true}
-        moveEffect={{
-          moveFn: moveEffectFn.transformY(50),
-          moveTime: '.3s',
-        }}
-      />
+      <Box sx={{ mb: 4 }}>
+        <BearCarousel
+          className="desktop-carousel"
+          data={films}
+          width="100%"
+          isEnableNavButton={true}
+          /*     isEnableAutoPlay={true} */
+          autoPlayTime={3000}
+          isEnableLoop={true}
+          slidesPerView={2}
+          isCenteredSlides={true}
+          moveEffect={{
+            moveFn: moveEffectFn.transformY(50),
+            moveTime: '.3s',
+          }}
+        />
+      </Box>
     )
   }
 
@@ -65,6 +72,8 @@ const MainCarousel = () => {
         data={films}
         width="100%"
         isEnableNavButton={true}
+        /*     isEnableAutoPlay={true} */
+        autoPlayTime={3000}
         isEnableLoop={true}
         slidesPerView={3}
         isCenteredSlides={true}
@@ -83,11 +92,13 @@ const MainCarousel = () => {
   if (data && isMobile) {
     return (
       <BearCarousel
-        className="tablet-carousel"
+        className="mobile-carousel"
         data={films}
         height="500px"
         width="100%"
         isEnableNavButton={true}
+        /*  isEnableAutoPlay={true} */
+        autoPlayTime={2000}
         isEnableLoop={true}
         slidesPerView={1}
         isCenteredSlides={false}

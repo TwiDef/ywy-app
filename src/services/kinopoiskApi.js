@@ -12,14 +12,20 @@ export const kinopoiskApi = createApi({
       return headers
     }
   }),
-
   endpoints: (builder) => ({
+
     getFilmCollection: builder.query({
       query: ({ type, page }) => {
         return `v2.2/films/collections?type=${type}&page=${page}`
+      }
+    }),
+
+    getFilms: builder.query({
+      query: ({ type, page, genreId = "", order = "" }) => {
+        return `v2.2/films?genres=${genreId}&order=${order}&type=${type}&page=${page}`
       }
     })
   })
 })
 
-export const { useGetFilmCollectionQuery } = kinopoiskApi
+export const { useGetFilmCollectionQuery, useGetFilmsQuery } = kinopoiskApi

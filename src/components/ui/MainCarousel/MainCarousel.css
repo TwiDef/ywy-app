@@ -12,3 +12,7 @@
     opacity: .9;
 }
 
+
+.mobile-carousel .bear-react-carousel__nav-button {
+    bottom: 100px;
+}
