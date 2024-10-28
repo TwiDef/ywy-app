@@ -1,29 +1,41 @@
 import React from 'react';
-import { Box, Stack, Typography } from '@mui/material';
+import { Link as RouterLink } from 'react-router-dom';
+import { Box, Link, Stack, Typography } from '@mui/material';
 import BearCarousel, { BearSlideImage } from 'bear-react-carousel';
 import { theme } from '../../../theme';
+
+import Loader from '../Loader/Loader';
+import ErrorMessage from '../ErrorMessage/ErrorMessage';
 
 import 'bear-react-carousel/dist/index.css';
 import './MiniCarousel.css';
 
-const MiniCarousel = ({ data, title, autoPlaySpeed }) => {
+const MiniCarousel = ({ data, title, autoPlaySpeed, icon, isLoading, isError }) => {
 
   const films = data && data.items.map(film => {
     return (
-      <Stack sx={{ display: "flex", gap: 1, maxHeight: "360px" }}>
-        <BearSlideImage imageUrl={film.posterUrl}></BearSlideImage>
-        <Typography sx={{ color: theme.white, textAlign: "center", lineHeight: 1.3 }}>
-          {film.nameRu ? film.nameRu : film.nameOriginal}
-        </Typography>
-      </Stack>
+      <Link
+        sx={{ textDecoration: "none" }}
+        to={`/movie/${film.kinopoiskId}`}
+        component={RouterLink}>
+        <Stack sx={{ display: "flex", gap: 1, maxHeight: "360px" }}>
+          <BearSlideImage imageUrl={film.posterUrl}></BearSlideImage>
+          <Typography sx={{ color: theme.white, textAlign: "center", lineHeight: 1.3 }}>
+            {film.nameRu ? film.nameRu : film.nameOriginal}
+          </Typography>
+        </Stack>
+      </Link>
     )
   });
 
+  if (isLoading) return <Loader />
+  if (isError) return <ErrorMessage />
+
   return (
     <Stack sx={{ mt: 3, mb: 3 }}>
-      <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
-        <span>icon</span>
-        <Typography sx={{ color: theme.white, fontSize: 30, mb: 2 }}>{title}</Typography>
+      <Box sx={{ display: "flex", alignItems: "center", gap: 2, mb: 2 }}>
+        <img src={icon} alt={title} width={30} />
+        <Typography sx={{ color: theme.white, fontSize: 30, lineHeight: 1 }}>{title}</Typography>
       </Box>
       <BearCarousel
         className="mini-carousel"

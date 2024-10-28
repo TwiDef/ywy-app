@@ -51,7 +51,7 @@ const MainCarousel = () => {
           data={films}
           width="100%"
           isEnableNavButton={true}
-          /*     isEnableAutoPlay={true} */
+          isEnableAutoPlay={true}
           autoPlayTime={3000}
           isEnableLoop={true}
           slidesPerView={2}
@@ -72,7 +72,7 @@ const MainCarousel = () => {
         data={films}
         width="100%"
         isEnableNavButton={true}
-        /*     isEnableAutoPlay={true} */
+        isEnableAutoPlay={true}
         autoPlayTime={3000}
         isEnableLoop={true}
         slidesPerView={3}
@@ -97,7 +97,7 @@ const MainCarousel = () => {
         height="500px"
         width="100%"
         isEnableNavButton={true}
-        /*  isEnableAutoPlay={true} */
+        isEnableAutoPlay={true}
         autoPlayTime={2000}
         isEnableLoop={true}
         slidesPerView={1}

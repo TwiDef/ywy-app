@@ -21,24 +21,45 @@ const Home = () => {
   const miniCarouselData = [
     {
       title: "Топ 250 фильмов",
-      icon: "",
+      icon: "https://cdn-icons-png.flaticon.com/512/3884/3884732.png",
       url: "/top250-movies",
       data: responseTop250Movies.data,
       autoPlaySpeed: 10000
     },
     {
       title: "Топ 250 телешоу",
-      icon: "",
+      icon: "https://cdn-icons-png.flaticon.com/512/2789/2789063.png",
       url: "/top250-TVShows",
       data: responseTop250TVShows.data,
       autoPlaySpeed: 6000
     },
     {
       title: "Топ популярных новинок",
-      icon: "",
+      icon: "https://cdn-icons-png.flaticon.com/512/6348/6348550.png",
       url: "/top-popular-all",
       data: responseTopPopularAll.data,
       autoPlaySpeed: 4000
+    },
+    {
+      title: "Фильмы",
+      icon: "https://cdn-icons-png.flaticon.com/512/4831/4831192.png",
+      url: "/films",
+      data: responseFilms.data,
+      autoPlaySpeed: 6000
+    },
+    {
+      title: "Сериалы",
+      icon: "https://cdn-icons-png.flaticon.com/512/3163/3163478.png",
+      url: "/series",
+      data: responseSeries.data,
+      autoPlaySpeed: 10000
+    },
+    {
+      title: "Мультфильмы",
+      icon: "https://cdn-icons-png.flaticon.com/512/2024/2024058.png",
+      url: "/cartoons",
+      data: responseCartoons.data,
+      autoPlaySpeed: 8000
     },
   ]
 
@@ -51,7 +72,10 @@ const Home = () => {
             key={i}
             data={row.data}
             title={row.title}
-            autoPlaySpeed={row.autoPlaySpeed} />
+            icon={row.icon}
+            autoPlaySpeed={row.autoPlaySpeed}
+            isLoading={isLoading}
+            isError={isError} />
         )
       })}
     </Stack>

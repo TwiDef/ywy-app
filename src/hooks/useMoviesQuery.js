@@ -3,7 +3,7 @@ import { filmCollectionType } from "../constants";
 import { useGetFilmCollectionQuery, useGetFilmsQuery } from "../services/kinopoiskApi";
 
 const useMoviesQuery = () => {
-  const { page } = useSelector(state => state.query)
+  const { page, order } = useSelector(state => state.query)
 
   const responseTop250Movies = useGetFilmCollectionQuery({
     type: filmCollectionType.TOP_250_MOVIES,
@@ -22,6 +22,7 @@ const useMoviesQuery = () => {
 
   const responseFilms = useGetFilmsQuery({
     type: "FILM",
+    order,
     genreId: "1",
     page,
   })
@@ -29,11 +30,13 @@ const useMoviesQuery = () => {
   const responseCartoons = useGetFilmsQuery({
     type: "FILM",
     genreId: "18",
+    order,
     page,
   })
 
   const responseSeries = useGetFilmsQuery({
     type: "TV_SERIES",
+    order,
     page,
   })
 

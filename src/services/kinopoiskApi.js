@@ -21,7 +21,7 @@ export const kinopoiskApi = createApi({
     }),
 
     getFilms: builder.query({
-      query: ({ type, page, genreId = "", order = "" }) => {
+      query: ({ type, page, genreId = "", order }) => {
         return `v2.2/films?genres=${genreId}&order=${order}&type=${type}&page=${page}`
       }
     })
