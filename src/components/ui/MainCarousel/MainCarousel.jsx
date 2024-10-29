@@ -19,7 +19,7 @@ const MainCarousel = () => {
   const isMobile = useMediaQuery('(max-width:768px)')
 
   const { data, isError, isLoading } = useGetFilmCollectionQuery({
-    type: filmCollectionType.TOP_POPULAR_MOVIES,
+    type: filmCollectionType[0].type,
     page: 1
   })
 

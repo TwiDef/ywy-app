@@ -10,7 +10,7 @@ import ErrorMessage from '../ErrorMessage/ErrorMessage';
 import 'bear-react-carousel/dist/index.css';
 import './MiniCarousel.css';
 
-const MiniCarousel = ({ data, title, autoPlaySpeed, icon, isLoading, isError }) => {
+const MiniCarousel = ({ data, url, title, autoPlaySpeed, icon, isLoading, isError }) => {
 
   const films = data && data.items.map(film => {
     return (
@@ -35,7 +35,12 @@ const MiniCarousel = ({ data, title, autoPlaySpeed, icon, isLoading, isError }) 
     <Stack sx={{ mt: 3, mb: 3 }}>
       <Box sx={{ display: "flex", alignItems: "center", gap: 2, mb: 2 }}>
         <img src={icon} alt={title} width={30} />
-        <Typography sx={{ color: theme.white, fontSize: 30, lineHeight: 1 }}>{title}</Typography>
+        <Typography sx={{ fontSize: 30, lineHeight: 1 }}>
+          <Link
+            sx={{ color: theme.white, textDecoration: "none" }}
+            to={`/${url}`}
+            component={RouterLink}>{title}</Link>
+        </Typography>
       </Box>
       <BearCarousel
         className="mini-carousel"

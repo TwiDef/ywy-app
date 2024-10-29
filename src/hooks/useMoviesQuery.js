@@ -6,17 +6,17 @@ const useMoviesQuery = () => {
   const { page, order } = useSelector(state => state.query)
 
   const responseTop250Movies = useGetFilmCollectionQuery({
-    type: filmCollectionType.TOP_250_MOVIES,
+    type: filmCollectionType[1].type,
     page
   })
 
   const responseTop250TVShows = useGetFilmCollectionQuery({
-    type: filmCollectionType.TOP_250_TV_SHOWS,
+    type: filmCollectionType[2].type,
     page
   })
 
   const responseTopPopularAll = useGetFilmCollectionQuery({
-    type: filmCollectionType.TOP_POPULAR_ALL,
+    type: filmCollectionType[3].type,
     page
   })
 

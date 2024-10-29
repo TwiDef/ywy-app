@@ -40,11 +40,21 @@ export const NAVBAR_LIST = [
   }
 ]
 
-export const filmCollectionType = {
-  TOP_POPULAR_MOVIES: "TOP_POPULAR_MOVIES",
-  TOP_250_MOVIES: "TOP_250_MOVIES",
-  TOP_250_TV_SHOWS: "TOP_250_TV_SHOWS",
-  TOP_POPULAR_ALL: "TOP_POPULAR_ALL"
-}
-
-
+export const filmCollectionType = [
+  {
+    type: "TOP_POPULAR_MOVIES",
+    url: "top-popular-movies"
+  },
+  {
+    type: "TOP_250_MOVIES",
+    url: "top250-movies"
+  },
+  {
+    type: "TOP_250_TV_SHOWS",
+    url: "top250-TVShows"
+  },
+  {
+    type: "TOP_POPULAR_ALL",
+    url: "top-popular-all"
+  }
+]
