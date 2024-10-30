@@ -7,7 +7,8 @@ import { filmCollectionType } from "../constants";
 
 import Layout from "./Layout";
 import Home from "./pages/Home/Home";
-import MovieTopList from "./pages/MovieTopList/MovieTopList";
+
+import MovieCollectionList from "./pages/MovieCollectionList";
 
 function App() {
 
@@ -22,7 +23,7 @@ function App() {
         },
         ...filmCollectionType.map((type) => ({
           path: `/${type.url}`,
-          element: <MovieTopList />
+          element: <MovieCollectionList />
         }))
 
       ]

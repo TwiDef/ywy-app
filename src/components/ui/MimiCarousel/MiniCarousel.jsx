@@ -18,7 +18,13 @@ const MiniCarousel = ({ data, url, title, autoPlaySpeed, icon, isLoading, isErro
         sx={{ textDecoration: "none" }}
         to={`/movie/${film.kinopoiskId}`}
         component={RouterLink}>
-        <Stack sx={{ display: "flex", gap: 1, maxHeight: "360px" }}>
+        <Stack sx={{
+          display: "flex",
+          gap: 1,
+          maxHeight: "360px",
+          "&:hover": { scale: 1.05 },
+          transition: ".1s ease-in-out"
+        }}>
           <BearSlideImage imageUrl={film.posterUrl}></BearSlideImage>
           <Typography sx={{ color: theme.white, textAlign: "center", lineHeight: 1.3 }}>
             {film.nameRu ? film.nameRu : film.nameOriginal}
