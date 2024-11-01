@@ -1,26 +1,31 @@
 import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
+import { addToFavorites } from '../../../redux/slices/favoritesSlice';
 import { Box, Link, Stack, Typography } from '@mui/material';
 import { theme } from '../../../theme';
 
 import styles from './MovieCard.module.css';
+import { useDispatch, useSelector } from 'react-redux';
 
 const MovieCard = ({ film }) => {
+  const dispatch = useDispatch()
+  const { favoritesFilms } = useSelector(state => state.favorites)
   const [onHover, setOnHover] = React.useState(false)
-  const [isFav, setIsFav] = React.useState(false)
 
   const displayFavIcon = () => {
-    return (
-      isFav ?
-        "https://solea-parent.dfs.ivi.ru/icon/ffffff,ffffff/favoriteRemove_20.svg" :
-        "https://solea-parent.dfs.ivi.ru/icon/ffffff,ffffff/favorite_20.svg"
-    )
+    const findedFilm = favoritesFilms.find(currentFilm => {
+      return currentFilm.kinopoiskId === film.kinopoiskId
+    })
+    if (findedFilm) {
+      return "https://solea-parent.dfs.ivi.ru/icon/ffffff,ffffff/favoriteRemove_20.svg"
+    } else {
+      return "https://solea-parent.dfs.ivi.ru/icon/ffffff,ffffff/favorite_20.svg"
+    }
   }
 
   const onAddToFav = (e) => {
     e.preventDefault()
-    console.log(film)
-    setIsFav(prev => !prev)
+    dispatch(addToFavorites(film))
   }
 
   return (
@@ -33,7 +38,11 @@ const MovieCard = ({ film }) => {
         onMouseEnter={() => setOnHover(prev => !prev)}
         onMouseLeave={() => setOnHover(false)}
         sx={{ width: 200, height: "360px", display: "flex", flexDirection: "column", gap: 1 }}>
-        <img width="100%" height="300px" src={film.posterUrlPreview} alt={film.nameOriginal} />
+        <img
+          width="100%"
+          height="300px"
+          src={film.posterUrlPreview}
+          alt={film.nameOriginal} />
         {onHover &&
           <Box className={onHover ? styles.overlay : ""}>
             <Stack
