@@ -1,12 +1,27 @@
 import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
-import { Box, Link, Typography } from '@mui/material';
+import { Box, Link, Stack, Typography } from '@mui/material';
 import { theme } from '../../../theme';
 
 import styles from './MovieCard.module.css';
 
 const MovieCard = ({ film }) => {
   const [onHover, setOnHover] = React.useState(false)
+  const [isFav, setIsFav] = React.useState(false)
+
+  const displayFavIcon = () => {
+    return (
+      isFav ?
+        "https://solea-parent.dfs.ivi.ru/icon/ffffff,ffffff/favoriteRemove_20.svg" :
+        "https://solea-parent.dfs.ivi.ru/icon/ffffff,ffffff/favorite_20.svg"
+    )
+  }
+
+  const onAddToFav = (e) => {
+    e.preventDefault()
+    console.log(film)
+    setIsFav(prev => !prev)
+  }
 
   return (
     <Link
@@ -19,7 +34,35 @@ const MovieCard = ({ film }) => {
         onMouseLeave={() => setOnHover(false)}
         sx={{ width: 200, height: "360px", display: "flex", flexDirection: "column", gap: 1 }}>
         <img width="100%" height="300px" src={film.posterUrlPreview} alt={film.nameOriginal} />
-        <div className={onHover ? styles.overlay : ""}></div>
+        {onHover &&
+          <Box className={onHover ? styles.overlay : ""}>
+            <Stack
+              sx={{ height: "100%", display: "flex", justifyContent: "space-between" }}>
+              <button
+                onClick={(e) => onAddToFav(e)}
+                className={styles.addToFavoritesBtn}>
+                <img
+                  width={30}
+                  height={30}
+                  src={`${displayFavIcon()}`}
+                  alt="add-to-favorites" />
+              </button>
+              <Stack sx={{ p: 2, display: "flex", flexDirection: "column", color: theme.white }}>
+                <Typography
+                  sx={{ fontSize: 30, fontWeight: "bold" }}>
+                  {film.ratingKinopoisk ? film.ratingKinopoisk : film.ratingImdb}
+                </Typography>
+                <Typography sx={{ fontSize: 22 }}>{film.year ? film.year : ""}</Typography>
+                {film.genres && film.genres.map(({ genre }, i) => {
+                  return (
+                    <Typography
+                      sx={{ lineHeight: 1.2, fontSize: 17 }}
+                      key={i}>{genre}</Typography>
+                  )
+                })}
+              </Stack>
+            </Stack>
+          </Box>}
         <Typography
           sx={{ lineHeight: 1, textAlign: "center" }}
           variant="body1"

@@ -43,18 +43,22 @@ export const NAVBAR_LIST = [
 export const filmCollectionType = [
   {
     type: "TOP_POPULAR_MOVIES",
+    title: "Топ популярных",
     url: "top-popular-movies"
   },
   {
     type: "TOP_250_MOVIES",
+    title: "Топ 250 фильмов",
     url: "top250-movies"
   },
   {
     type: "TOP_250_TV_SHOWS",
+    title: "Топ 250 телешоу",
     url: "top250-TVShows"
   },
   {
     type: "TOP_POPULAR_ALL",
+    title: "Топ популярных новинок",
     url: "top-popular-all"
   }
 ]
