@@ -1,0 +1,29 @@
+.myYwy {
+    position: relative;
+}
+
+.favoritesCounter, .favoritesCounterMobile {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #b8b0da;
+    color: #100e19;
+    top: 0;
+    right:  -12px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.favoritesCounterMobile {
+    background-color: #e6e6e6;
+    top: 10px;
+    right:  78px;
+}
+
+.favoritesCounter span {
+    display: inline-block;
+}

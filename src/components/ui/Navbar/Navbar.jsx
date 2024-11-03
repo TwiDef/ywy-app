@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import { AppBar, Drawer, Box, List, Button, ListItem, Container, Stack, Typography, Link, ListItemButton } from '@mui/material';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { theme } from '../../../theme';
@@ -8,9 +9,12 @@ import { NAVBAR_LIST } from '../../../constants';
 import MenuIcon from '@mui/icons-material/Menu';
 import NavIcon from './NavIcon/NavIcon';
 
+import styles from './Navbar.module.css';
+
 const Navbar = () => {
   const isMobile = useMediaQuery('(max-width:768px)');
 
+  const { favoritesFilms } = useSelector(state => state.favorites)
   const [isOpen, setIsOpen] = React.useState(false);
   const handleDrawerToggle = () => {
     setIsOpen((prevState) => !prevState)
@@ -53,6 +57,12 @@ const Navbar = () => {
                         <ListItemButton sx={{ gap: "10px" }}>
                           <NavIcon iconName={item.icon} />
                           <Typography variant="h6" component="div">{item.type}</Typography>
+                          <Typography>{item.url === "/my-ywy" ?
+                            <div className={styles.favoritesCounterMobile}>
+                              <span>{favoritesFilms.length}</span>
+                            </div> :
+                            ""}
+                          </Typography>
                         </ListItemButton>
                       </ListItem>
                     </Link>
@@ -70,9 +80,19 @@ const Navbar = () => {
                   sx={{ textDecoration: "none", color: theme.white }}
                 >
                   <Typography
+                    className={styles.myYwy}
                     sx={{ '&:hover': { color: theme.pale_purple }, transition: ".2s ease-in-out" }}
                     variant="h6"
-                    component="div">{item.type}</Typography>
+                    component="div">
+                    <>
+                      {item.type}
+                      {item.url === "/my-ywy" ?
+                        <div className={styles.favoritesCounter}>
+                          <span>{favoritesFilms.length}</span>
+                        </div> :
+                        ""}
+                    </>
+                  </Typography>
                 </Link>
               )
             })}

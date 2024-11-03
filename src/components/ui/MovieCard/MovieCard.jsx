@@ -58,7 +58,7 @@ const MovieCard = ({ film }) => {
               </button>
               <Stack sx={{ p: 2, display: "flex", flexDirection: "column", color: theme.white }}>
                 <Typography
-                  sx={{ fontSize: 30, fontWeight: "bold" }}>
+                  sx={{ fontSize: 36, fontWeight: "bold" }}>
                   {film.ratingKinopoisk ? film.ratingKinopoisk : film.ratingImdb}
                 </Typography>
                 <Typography sx={{ fontSize: 22 }}>{film.year ? film.year : ""}</Typography>
