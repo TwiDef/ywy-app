@@ -11,10 +11,12 @@ export const querySlice = createSlice({
   name: 'query',
   initialState,
   reducers: {
-
+    onChangePage: (state, action) => {
+      state.page = action.payload
+    }
   },
 })
 
-export const { } = querySlice.actions
+export const { onChangePage } = querySlice.actions
 
 export default querySlice.reducer

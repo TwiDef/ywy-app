@@ -59,8 +59,8 @@ const Navbar = () => {
                         <ListItemButton sx={{ gap: "10px" }}>
                           <NavIcon iconName={item.icon} />
                           <Typography variant="h6" component="div">
-                            {item.type}
-                            {item.url === "/my-ywy" ?
+                            {item.title}
+                            {item.type === "MY_YWY" ?
                               <div className={styles.favoritesCounterMobile}>
                                 <span>{favoritesFilms.length}</span>
                               </div> :

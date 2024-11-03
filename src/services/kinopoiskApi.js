@@ -25,6 +25,8 @@ export const kinopoiskApi = createApi({
         return `v2.2/films?genres=${genreId}&order=${order}&type=${type}&page=${page}`
       }
     })
+
+
   })
 })
 

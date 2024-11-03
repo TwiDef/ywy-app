@@ -43,7 +43,10 @@ const MiniCarousel = ({ data, url, title, autoPlaySpeed, icon, isLoading, isErro
         <img src={icon} alt={title} width={30} />
         <Typography sx={{ fontSize: 30, lineHeight: 1 }}>
           <Link
-            sx={{ color: theme.white, textDecoration: "none" }}
+            sx={{
+              color: theme.white, textDecoration: "none",
+              "&:hover": { color: theme.pale_purple }
+            }}
             to={`/${url}`}
             component={RouterLink}>{title}</Link>
         </Typography>
