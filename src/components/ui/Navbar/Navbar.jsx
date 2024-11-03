@@ -24,7 +24,9 @@ const Navbar = () => {
       <Container maxWidth="lg">
         <Stack sx={{ display: "flex", alignItems: "center", flexDirection: "row", gap: "20px", p: 1 }}>
           {isMobile &&
-            <Button onClick={handleDrawerToggle}>
+            <Button
+              sx={{ "&:active": { bgcolor: theme.pale_purple } }}
+              onClick={handleDrawerToggle}>
               <MenuIcon sx={{ color: `${theme.white}` }} />
             </Button>}
           <Link
@@ -56,12 +58,13 @@ const Navbar = () => {
                       <ListItem disablePadding>
                         <ListItemButton sx={{ gap: "10px" }}>
                           <NavIcon iconName={item.icon} />
-                          <Typography variant="h6" component="div">{item.type}</Typography>
-                          <Typography>{item.url === "/my-ywy" ?
-                            <div className={styles.favoritesCounterMobile}>
-                              <span>{favoritesFilms.length}</span>
-                            </div> :
-                            ""}
+                          <Typography variant="h6" component="div">
+                            {item.type}
+                            {item.url === "/my-ywy" ?
+                              <div className={styles.favoritesCounterMobile}>
+                                <span>{favoritesFilms.length}</span>
+                              </div> :
+                              ""}
                           </Typography>
                         </ListItemButton>
                       </ListItem>
@@ -84,14 +87,12 @@ const Navbar = () => {
                     sx={{ '&:hover': { color: theme.pale_purple }, transition: ".2s ease-in-out" }}
                     variant="h6"
                     component="div">
-                    <>
-                      {item.type}
-                      {item.url === "/my-ywy" ?
-                        <div className={styles.favoritesCounter}>
-                          <span>{favoritesFilms.length}</span>
-                        </div> :
-                        ""}
-                    </>
+                    {item.title}
+                    {item.type === "MY_YWY" ?
+                      <div className={styles.favoritesCounter}>
+                        <span>{favoritesFilms.length}</span>
+                      </div> :
+                      ""}
                   </Typography>
                 </Link>
               )

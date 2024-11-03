@@ -3,12 +3,12 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import { filmCollectionType } from "../constants";
+import { filmCollectionType, NAVBAR_LIST } from "../constants";
 
 import Layout from "./Layout";
 import Home from "./pages/Home/Home";
-
 import MovieCollectionList from "./pages/MovieCollectionList";
+import MovieMainList from "./pages/MovieMainList";
 
 function App() {
 
@@ -24,8 +24,11 @@ function App() {
         ...filmCollectionType.map((type) => ({
           path: `/${type.url}`,
           element: <MovieCollectionList />
+        })),
+        ...NAVBAR_LIST.slice(1, 4).map((type) => ({
+          path: `/${type.url}`,
+          element: <MovieMainList />
         }))
-
       ]
     }
   ])

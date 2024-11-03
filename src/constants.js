@@ -14,29 +14,34 @@ export const iconComponent = {
 
 export const NAVBAR_LIST = [
   {
-    url: "/my-ywy",
-    type: "Мой-ywy",
-    icon: "FavoriteIcon"
+    title: "Мой-ywy",
+    type: "MY_YWY",
+    icon: "FavoriteIcon",
+    url: "my-ywy"
   },
   {
-    url: "/movies",
-    type: "Фильмы",
-    icon: "MovieIcon"
+    title: "Фильмы",
+    type: "FILM",
+    icon: "MovieIcon",
+    url: "films"
   },
   {
-    url: "/series",
-    type: "Сериалы",
-    icon: "ShopIcon"
+    title: "Сериалы",
+    type: "TV_SERIES",
+    icon: "ShopIcon",
+    url: "series"
   },
   {
-    url: "/cartoons",
-    type: "Мультфильмы",
-    icon: "CastleIcon"
+    title: "Мультфильмы",
+    type: "FILM",
+    icon: "CastleIcon",
+    url: "cartoons"
   },
   {
-    url: "/search",
-    type: "Поиск",
-    icon: "SearchIcon"
+    title: "Поиск",
+    type: "SEARCH",
+    icon: "SearchIcon",
+    url: "search"
   }
 ]
 
