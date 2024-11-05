@@ -1,4 +1,5 @@
 import React from 'react';
+import { useFingerEvents } from 'react-finger';
 import { Link as RouterLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToFavorites, syncWithLocalStorage } from '../../../redux/slices/favoritesSlice';
@@ -29,8 +30,13 @@ const MovieCard = ({ film }) => {
     dispatch(syncWithLocalStorage())
   }
 
+  const mobileEvents = useFingerEvents({
+    onFingerMove: event => setOnHover(prev => !prev)
+  })
+
   return (
     <Link
+      {...mobileEvents}
       sx={{ textDecoration: "none" }}
       to={`/movie/${film.kinopoiskId}`}
       component={RouterLink}>

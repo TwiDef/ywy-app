@@ -37,13 +37,14 @@ const MovieList = ({ data, title }) => {
   return (
     <Stack>
       <Stack sx={{
+        width: "100%",
         display: "flex",
         flexDirection: { sm: "column", md: "row" },
         alignItems: "center",
-        justifyContent: "center",
+        justifyContent: "start",
         gap: { sm: 0, md: 3 },
         margin: {
-          xs: "14px 0 14px 0", sm: "20px 0 20px 0", md: 0
+          xs: "20px 0 20px 0", sm: "20px 0 20px 0", md: "0 auto 0 0"
         }
       }}>
         <Button
@@ -55,6 +56,7 @@ const MovieList = ({ data, title }) => {
             alignItems: "center",
             gap: 0.5
           }}
+          size="small"
           variant="contained"
           color="primary">
           <Typography sx={{ fontWeight: "bold", fontSize: 20, transform: "rotate(180deg)" }}> &#x279C; </Typography>
@@ -69,27 +71,28 @@ const MovieList = ({ data, title }) => {
           <Typography
             sx={{
               mt: 2, mb: 2,
-              "@media (max-width: 480px)": { fontSize: 22, mb: 3, mt: 3, textAlign: "center" }
+              "@media (max-width: 480px)": { fontSize: 28, mb: 2, mt: 2, textAlign: "center" }
             }}
             variant="h4"
             color={theme.white}>
             {title}
           </Typography>
         </Box>
-        <Button
-          onClick={handleClearList}
-          endIcon={<DeleteIcon />}
-          sx={{
-            marginLeft: { sm: "0", md: "auto" },
-            bgcolor: theme.light_red,
-            color: theme.white,
-            display: "flex",
-            alignItems: "center",
-          }}
-          size="large"
-          variant="text">
-          <Typography sx={{ fontWeight: "bold", fontSize: 14 }}>Очистить</Typography>
-        </Button>
+        {pathname === "/my-ywy" &&
+          <Button
+            onClick={handleClearList}
+            endIcon={<DeleteIcon />}
+            sx={{
+              marginLeft: { sm: "0", md: "auto" },
+              bgcolor: theme.light_red,
+              color: theme.white,
+              display: "flex",
+              alignItems: "center",
+            }}
+            size="large"
+            variant="text">
+            <Typography sx={{ fontWeight: "bold", fontSize: 14 }}>Очистить</Typography>
+          </Button>}
       </Stack>
       <Stack sx={{
         display: "flex",
