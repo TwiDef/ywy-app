@@ -1,13 +1,18 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  favoritesFilms: []
+  favoritesFilms: localStorage.getItem("favorites_films_list") ?
+    (JSON.parse(localStorage.getItem("favorites_films_list"))) :
+    []
 }
 
 export const favoritesSlice = createSlice({
   name: 'favorites',
   initialState,
   reducers: {
+    syncWithLocalStorage: (state) => {
+      localStorage.setItem("favorites_films_list", JSON.stringify(state.favoritesFilms))
+    },
     addToFavorites: (state, action) => {
       const findedFilm = state.favoritesFilms.find(film => {
         return film.kinopoiskId === action.payload.kinopoiskId
@@ -24,6 +29,6 @@ export const favoritesSlice = createSlice({
   },
 })
 
-export const { addToFavorites } = favoritesSlice.actions
+export const { addToFavorites, syncWithLocalStorage } = favoritesSlice.actions
 
 export default favoritesSlice.reducer

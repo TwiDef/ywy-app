@@ -27,7 +27,7 @@ const MovieList = ({ data, title }) => {
 
   return (
     <Stack>
-      <Stack sx={{ display: "flex", flexDirection: "row", alignItems: "center", gap: 2 }}>
+      <Stack sx={{ display: "flex", flexDirection: "row", alignItems: "center", gap: 3 }}>
         <Button
           onClick={() => navigate(-1)}
           sx={{
@@ -42,15 +42,22 @@ const MovieList = ({ data, title }) => {
           <Typography sx={{ fontWeight: "bold", fontSize: 20, transform: "rotate(180deg)" }}> &#x279C; </Typography>
           <Typography sx={{ fontWeight: "bold", fontSize: 14 }}>назад</Typography>
         </Button>
-        <Typography
-          sx={{
-            mt: 2, mb: 2,
-            "@media (max-width: 480px)": { fontSize: 22, mb: 3, mt: 3, textAlign: "center" }
-          }}
-          variant="h4"
-          color={theme.white}>
-          {title}
-        </Typography>
+        <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+          {pathname === "/my-ywy" &&
+            <img
+              width={40}
+              height={40}
+              src="https://cdn-icons-png.flaticon.com/512/17069/17069463.png" alt="favorites-icon" />}
+          <Typography
+            sx={{
+              mt: 2, mb: 2,
+              "@media (max-width: 480px)": { fontSize: 22, mb: 3, mt: 3, textAlign: "center" }
+            }}
+            variant="h4"
+            color={theme.white}>
+            {title}
+          </Typography>
+        </Box>
       </Stack>
       <Stack sx={{
         display: "flex",
@@ -70,13 +77,15 @@ const MovieList = ({ data, title }) => {
       <Box
         sx={{ display: "flex", justifyContent: "center", mb: 4 }}
         spacing={2}>
-        <Pagination
-          sx={{ "& .MuiPaginationItem-root": { color: "#fff" } }}
-          page={page}
-          /*     variant="outlined" */
-          count={data.totalPages}
-          color="secondary"
-          onChange={handleChangePage} />
+        {data.totalPages &&
+          <Pagination
+            sx={{ "& .MuiPaginationItem-root": { color: "#fff" } }}
+            page={page}
+            /* variant="outlined" */
+            count={data.totalPages}
+            color="secondary"
+            onChange={handleChangePage} />
+        }
       </Box>
     </Stack>
   );

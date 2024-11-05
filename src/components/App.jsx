@@ -9,6 +9,7 @@ import Layout from "./Layout";
 import Home from "./pages/Home/Home";
 import MovieCollectionList from "./pages/MovieCollectionList";
 import MovieMainList from "./pages/MovieMainList";
+import MyYwy from "./pages/MyYwy";
 
 function App() {
 
@@ -20,6 +21,10 @@ function App() {
         {
           path: "/",
           element: <Home />,
+        },
+        {
+          path: "/my-ywy",
+          element: <MyYwy />
         },
         ...filmCollectionType.map((type) => ({
           path: `/${type.url}`,

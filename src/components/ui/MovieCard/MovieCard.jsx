@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
-import { addToFavorites } from '../../../redux/slices/favoritesSlice';
+import { addToFavorites, syncWithLocalStorage } from '../../../redux/slices/favoritesSlice';
 import { Box, Link, Stack, Typography } from '@mui/material';
 import { theme } from '../../../theme';
 
@@ -26,6 +26,7 @@ const MovieCard = ({ film }) => {
   const onAddToFav = (e) => {
     e.preventDefault()
     dispatch(addToFavorites(film))
+    dispatch(syncWithLocalStorage())
   }
 
   return (
