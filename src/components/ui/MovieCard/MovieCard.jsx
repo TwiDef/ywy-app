@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import { addToFavorites, syncWithLocalStorage } from '../../../redux/slices/favoritesSlice';
 import { Box, Link, Stack, Typography } from '@mui/material';
 import { theme } from '../../../theme';
 
 import styles from './MovieCard.module.css';
-import { useDispatch, useSelector } from 'react-redux';
 
 const MovieCard = ({ film }) => {
   const dispatch = useDispatch()

@@ -3,9 +3,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Box, Button, Pagination, Stack, Typography } from '@mui/material';
 import { onChangePage } from '../../../redux/slices/querySlice';
+import { clearFavorites, syncWithLocalStorage } from '../../../redux/slices/favoritesSlice';
 import { theme } from '../../../theme';
 
 import MovieCard from '../MovieCard/MovieCard';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 const MovieList = ({ data, title }) => {
   const navigate = useNavigate()
@@ -19,6 +21,13 @@ const MovieList = ({ data, title }) => {
     window.scrollTo(0, 0)
   };
 
+  const handleClearList = () => {
+    if (window.confirm("Вы действительно хотите очистить список фильмов?")) {
+      dispatch(clearFavorites())
+      dispatch(syncWithLocalStorage())
+    }
+  }
+
   React.useEffect(() => {
     return () => {
       dispatch(onChangePage(1))
@@ -27,7 +36,16 @@ const MovieList = ({ data, title }) => {
 
   return (
     <Stack>
-      <Stack sx={{ display: "flex", flexDirection: "row", alignItems: "center", gap: 3 }}>
+      <Stack sx={{
+        display: "flex",
+        flexDirection: { sm: "column", md: "row" },
+        alignItems: "center",
+        justifyContent: "center",
+        gap: { sm: 0, md: 3 },
+        margin: {
+          xs: "14px 0 14px 0", sm: "20px 0 20px 0", md: 0
+        }
+      }}>
         <Button
           onClick={() => navigate(-1)}
           sx={{
@@ -58,6 +76,20 @@ const MovieList = ({ data, title }) => {
             {title}
           </Typography>
         </Box>
+        <Button
+          onClick={handleClearList}
+          endIcon={<DeleteIcon />}
+          sx={{
+            marginLeft: { sm: "0", md: "auto" },
+            bgcolor: theme.light_red,
+            color: theme.white,
+            display: "flex",
+            alignItems: "center",
+          }}
+          size="large"
+          variant="text">
+          <Typography sx={{ fontWeight: "bold", fontSize: 14 }}>Очистить</Typography>
+        </Button>
       </Stack>
       <Stack sx={{
         display: "flex",

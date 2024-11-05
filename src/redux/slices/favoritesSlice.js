@@ -25,10 +25,13 @@ export const favoritesSlice = createSlice({
           return film.kinopoiskId !== action.payload.kinopoiskId
         })
       }
+    },
+    clearFavorites: (state) => {
+      state.favoritesFilms = []
     }
   },
 })
 
-export const { addToFavorites, syncWithLocalStorage } = favoritesSlice.actions
+export const { addToFavorites, syncWithLocalStorage, clearFavorites } = favoritesSlice.actions
 
 export default favoritesSlice.reducer
