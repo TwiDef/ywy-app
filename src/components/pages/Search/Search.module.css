@@ -1,4 +1,13 @@
+.searchBlock {
+    position: relative;
+}
+
 .textField input {
     color: #e6e6e6;
     margin-left: 10px;
+    padding-right: 60px;
+}
+
+.hidden {
+    visibility: hidden;
 }
