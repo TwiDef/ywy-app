@@ -6,10 +6,11 @@ import {
 import { filmCollectionType, NAVBAR_LIST } from "../constants";
 
 import Layout from "./Layout";
-import Home from "./pages/Home/Home";
+import Home from "./pages/Home";
 import MovieCollectionList from "./pages/MovieCollectionList";
 import MovieMainList from "./pages/MovieMainList";
 import MyYwy from "./pages/MyYwy";
+import Search from "./pages/Search";
 
 function App() {
 
@@ -33,7 +34,11 @@ function App() {
         ...NAVBAR_LIST.slice(1, 4).map((type) => ({
           path: `/${type.url}`,
           element: <MovieMainList />
-        }))
+        })),
+        {
+          path: "/search",
+          element: <Search />
+        }
       ]
     }
   ])
