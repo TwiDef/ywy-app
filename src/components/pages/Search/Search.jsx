@@ -1,21 +1,26 @@
 import React from 'react';
-import { Stack, TextField, Button, Box } from '@mui/material';
-import { useGetFilmByKeywordQuery } from '../../../services/kinopoiskApi';
+import { useSelector } from 'react-redux';
+import { Stack, TextField, Button } from '@mui/material';
+import { useGetFilmsQuery } from '../../../services/kinopoiskApi';
+import { theme } from '../../../theme';
 import SearchIcon from '@mui/icons-material/Search';
 import CloseIcon from '@mui/icons-material/Close';
-import { theme } from '../../../theme';
+
+import MovieList from '../../ui/MovieList/';
+import Loader from '../../ui/Loader';
 
 import styles from './Search.module.css';
 
 const Search = () => {
+  const { order, type, page } = useSelector(state => state.query)
   const [inputValue, setInputValue] = React.useState("")
 
-  const { data, isLoading, isError } = useGetFilmByKeywordQuery({
-    keyword: "shrek",
-    page: 1
+  const { data, isFetching, isError } = useGetFilmsQuery({
+    type,
+    order,
+    keyword: inputValue,
+    page
   })
-
-  /* console.log(inputValue) */
 
   return (
     <Stack sx={{ display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column" }}>
@@ -58,6 +63,10 @@ const Search = () => {
           <CloseIcon sx={{ color: theme.white }} />
         </Button>
       </Stack>
+      <>
+        {isError || (data && data.items.length === 0) ? "nichego nety" :
+          isFetching ? <Loader /> : data && <MovieList data={data} title="Поиск по названию фильма" />}
+      </>
     </Stack>
   );
 };

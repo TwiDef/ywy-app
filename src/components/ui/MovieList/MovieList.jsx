@@ -109,19 +109,21 @@ const MovieList = ({ data, title }) => {
           )
         })}
       </Stack>
-      <Box
-        sx={{ display: "flex", justifyContent: "center", mb: 4 }}
-        spacing={2}>
-        {data.totalPages &&
-          <Pagination
-            sx={{ "& .MuiPaginationItem-root": { color: "#fff" } }}
-            page={page}
-            /* variant="outlined" */
-            count={data.totalPages}
-            color="secondary"
-            onChange={handleChangePage} />
-        }
-      </Box>
+      {pathname !== "/search" &&
+        <Box
+          sx={{ display: "flex", justifyContent: "center", mb: 4 }}
+          spacing={2}>
+          {data.totalPages &&
+            <Pagination
+              sx={{ "& .MuiPaginationItem-root": { color: "#fff" } }}
+              page={page}
+              /* variant="outlined" */
+              count={data.totalPages}
+              color="secondary"
+              onChange={handleChangePage} />
+          }
+        </Box>
+      }
     </Stack>
   );
 };

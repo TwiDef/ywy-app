@@ -21,14 +21,8 @@ export const kinopoiskApi = createApi({
     }),
 
     getFilms: builder.query({
-      query: ({ type, page, genreId = "", order }) => {
-        return `v2.2/films?genres=${genreId}&order=${order}&type=${type}&page=${page}`
-      }
-    }),
-
-    getFilmByKeyword: builder.query({
-      query: ({ keyword, page }) => {
-        return `v2.1/films/search-by-keyword?keyword=${keyword}&page=${page}`
+      query: ({ type, page, genreId = "", order, keyword = "" }) => {
+        return `v2.2/films?genres=${genreId}&order=${order}&type=${type}&keyword=${keyword}&page=${page}`
       }
     })
   })
@@ -37,5 +31,4 @@ export const kinopoiskApi = createApi({
 export const {
   useGetFilmCollectionQuery,
   useGetFilmsQuery,
-  useGetFilmByKeywordQuery
 } = kinopoiskApi
