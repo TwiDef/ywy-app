@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
+  keyword: "",
   genreId: "",
   order: "NUM_VOTE",
   type: "",
@@ -13,10 +14,13 @@ export const querySlice = createSlice({
   reducers: {
     onChangePage: (state, action) => {
       state.page = action.payload
+    },
+    onChangeKeyword: (state, action) => {
+      state.keyword = action.payload
     }
   },
 })
 
-export const { onChangePage } = querySlice.actions
+export const { onChangePage, onChangeKeyword } = querySlice.actions
 
 export default querySlice.reducer

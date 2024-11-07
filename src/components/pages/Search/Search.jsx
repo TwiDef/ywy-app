@@ -1,7 +1,8 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Stack, TextField, Button } from '@mui/material';
 import { useGetFilmsQuery } from '../../../services/kinopoiskApi';
+import { onChangeKeyword } from '../../../redux/slices/querySlice';
 import { theme } from '../../../theme';
 import SearchIcon from '@mui/icons-material/Search';
 import CloseIcon from '@mui/icons-material/Close';
@@ -11,16 +12,26 @@ import Loader from '../../ui/Loader';
 
 import styles from './Search.module.css';
 
+
 const Search = () => {
-  const { order, type, page } = useSelector(state => state.query)
+  const dispatch = useDispatch()
+  const { order, type, page, keyword } = useSelector(state => state.query)
   const [inputValue, setInputValue] = React.useState("")
 
   const { data, isFetching, isError } = useGetFilmsQuery({
     type,
     order,
-    keyword: inputValue,
+    keyword,
     page
   })
+
+  React.useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      dispatch(onChangeKeyword(inputValue))
+    }, 400)
+
+    return () => clearTimeout(timeoutId)
+  }, [inputValue, dispatch])
 
   return (
     <Stack sx={{ display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column" }}>
