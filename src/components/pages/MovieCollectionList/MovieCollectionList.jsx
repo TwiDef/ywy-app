@@ -15,7 +15,7 @@ const MovieCollectionList = () => {
 
   const currentCollectionType = filmCollectionType.filter((collection) => pathname === collection.url)
 
-  const { data, isLoading, isError } = useGetFilmCollectionQuery({
+  const { data, isFetching, isLoading, isError } = useGetFilmCollectionQuery({
     type: currentCollectionType[0].type,
     page
   })
@@ -29,7 +29,7 @@ const MovieCollectionList = () => {
   if (isError) return <ErrorMessage />
 
   return (
-    <MovieList data={data} title={currentCollectionType[0].title} />
+    <MovieList data={data} isFetching={isFetching} title={currentCollectionType[0].title} />
   );
 };
 

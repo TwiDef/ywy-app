@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { Box, Button, Pagination, Stack, Typography } from '@mui/material';
 import { onChangePage } from '../../../redux/slices/querySlice';
 import { clearFavorites, syncWithLocalStorage } from '../../../redux/slices/favoritesSlice';
@@ -8,9 +8,10 @@ import { theme } from '../../../theme';
 
 import MovieCard from '../MovieCard/MovieCard';
 import DeleteIcon from '@mui/icons-material/Delete';
+import BackButton from '../BackButton/BackButton';
+import Loader from '../Loader';
 
-const MovieList = ({ data, title }) => {
-  const navigate = useNavigate()
+const MovieList = ({ data, isFetching, title }) => {
   const location = useLocation()
   const dispatch = useDispatch()
   const { page } = useSelector(state => state.query)
@@ -34,6 +35,8 @@ const MovieList = ({ data, title }) => {
     }
   }, [pathname, dispatch])
 
+  if (isFetching) return <Loader />
+
   return (
     <Stack>
       <Stack sx={{
@@ -47,21 +50,7 @@ const MovieList = ({ data, title }) => {
           xs: "20px 0 20px 0", sm: "20px 0 20px 0", md: "0 auto 0 0"
         }
       }}>
-        <Button
-          onClick={() => navigate(-1)}
-          sx={{
-            bgcolor: theme.pale_purple,
-            color: theme.dark_main,
-            display: "flex",
-            alignItems: "center",
-            gap: 0.5
-          }}
-          size="small"
-          variant="contained"
-          color="primary">
-          <Typography sx={{ fontWeight: "bold", fontSize: 20, transform: "rotate(180deg)" }}> &#x279C; </Typography>
-          <Typography sx={{ fontWeight: "bold", fontSize: 14 }}>назад</Typography>
-        </Button>
+        <BackButton />
         <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
           {pathname === "/my-ywy" &&
             <img

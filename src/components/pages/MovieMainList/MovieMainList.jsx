@@ -17,7 +17,7 @@ const MovieMainList = () => {
     .slice(1, 4)
     .filter((collection) => pathname === collection.url)
 
-  const { data, isLoading, isError } = useGetFilmsQuery({
+  const { data, isFetching, isLoading, isError } = useGetFilmsQuery({
     type: currentMainListType[0].type,
     order,
     genreId: currentMainListType[0].url === "cartoons" ? 18 : genreId,
@@ -33,7 +33,7 @@ const MovieMainList = () => {
   if (isError) return <ErrorMessage />
 
   return (
-    <MovieList data={data} title={currentMainListType[0].title} />
+    <MovieList data={data} isFetching={isFetching} title={currentMainListType[0].title} />
   );
 };
 
