@@ -51,7 +51,7 @@ const DesktopSlide = ({ film }) => {
 
           <Box sx={{ margin: "0 auto" }}>
             <Link
-              to={`/movies/${film.kinopoiskId}`}
+              to={`/movie/${film.kinopoiskId}`}
               component={RouterLink}>
               <Button size="small" sx={{
                 fontWeight: "bold",

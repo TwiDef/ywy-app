@@ -47,13 +47,21 @@ const MoviePreview = ({ data }) => {
             gap: 1,
             justifyContent: { xs: "center", md: "unset" }
           }}>
-            <Typography sx={{ fontSize: 24, textShadow: `3px 3px 3px ${theme.black}` }}>
-              {data && data.year} |
-            </Typography>
-            <Typography sx={{ fontSize: 24, textShadow: `3px 3px 3px ${theme.black}` }}>
-              {data && data.filmLength} мин |
-            </Typography>
-            <Typography sx={{ fontSize: 24, textShadow: `3px 3px 3px ${theme.black}` }}>
+            <Typography sx={{
+              fontSize: { xs: 16, md: 24 }, textShadow: `3px 3px 3px ${theme.black}`
+            }}>
+              {data && data.year}
+            </Typography><span>|</span>
+            <Typography sx={{
+              fontSize: { xs: 16, md: 24 },
+              textShadow: `3px 3px 3px ${theme.black}`
+            }}>
+              {data && data.filmLength} мин
+            </Typography><span>|</span>
+            <Typography sx={{
+              fontSize: { xs: 16, md: 24 },
+              textShadow: `3px 3px 3px ${theme.black}`
+            }}>
               {data && data.countries.map(({ country }) => {
                 return country
               }).join(", ")}
@@ -79,7 +87,7 @@ const MoviePreview = ({ data }) => {
                 fontWeight: "bold",
                 textShadow: `3px 3px 3px ${theme.black}`
               }}>
-              {data && data.ratingKinopoisk}
+              {data && (data.ratingKinopoisk ? data.ratingKinopoisk : "?")}
             </Typography>
           </Stack>
         </Stack>

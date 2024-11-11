@@ -9,7 +9,7 @@ const MobileSlide = ({ film }) => {
   return (
     <Link
       sx={{ textDecoration: "none" }}
-      to={`/movies/${film.kinopoiskId}`}
+      to={`/movie/${film.kinopoiskId}`}
       component={RouterLink}>
       <Stack
         onClick={() => console.log(film)}
