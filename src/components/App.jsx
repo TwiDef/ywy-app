@@ -11,6 +11,7 @@ import MovieCollectionList from "./pages/MovieCollectionList";
 import MovieMainList from "./pages/MovieMainList";
 import MyYwy from "./pages/MyYwy";
 import Search from "./pages/Search";
+import MovieDetail from "./pages/MovieDetail/MovieDetail";
 
 function App() {
 
@@ -35,6 +36,10 @@ function App() {
           path: `/${type.url}`,
           element: <MovieMainList />
         })),
+        {
+          path: "/movie/:id",
+          element: <MovieDetail />
+        },
         {
           path: "/search",
           element: <Search />

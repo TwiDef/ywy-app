@@ -1,0 +1,9 @@
+.overlay {
+    position: absolute;
+    width: calc(100% + 1px);
+    height: 100%;
+    top: 0;
+    right: 0;
+    backdrop-filter: blur(3px);
+    background: radial-gradient(50.37% 47.04% at 50.88% 44.96%, rgba(6, 6, 30, 0) 0%, #100e19 100%);
+}
