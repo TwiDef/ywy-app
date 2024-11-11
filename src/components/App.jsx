@@ -12,6 +12,7 @@ import MovieMainList from "./pages/MovieMainList";
 import MyYwy from "./pages/MyYwy";
 import Search from "./pages/Search";
 import MovieDetail from "./pages/MovieDetail/MovieDetail";
+import ErrorPage from "./pages/ErrorPage/ErrorPage";
 
 function App() {
 
@@ -22,7 +23,7 @@ function App() {
       children: [
         {
           path: "/",
-          element: <Home />,
+          element: <Home />
         },
         {
           path: "/my-ywy",
@@ -43,6 +44,10 @@ function App() {
         {
           path: "/search",
           element: <Search />
+        },
+        {
+          path: "*",
+          element: <ErrorPage />
         }
       ]
     }

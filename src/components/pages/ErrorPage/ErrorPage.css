@@ -1,0 +1,17 @@
+.errorPage__wrapper {
+    width: 100%;
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.error-title {
+  margin: 0;
+  font-size: 40px;
+}
+
+.error-text {
+  margin: 0;  
+}

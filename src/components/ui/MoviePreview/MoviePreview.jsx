@@ -1,9 +1,10 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Box, Stack, Typography } from '@mui/material';
 import { theme } from '../../../theme';
 
 import StarIcon from '@mui/icons-material/Star';
 import BackButton from './../BackButton';
+import defaultBgImg from './../../../assets/img/default-movie-bg.jpeg';
 
 import styles from './MoviePreview.module.css';
 
@@ -19,7 +20,7 @@ const MoviePreview = ({ data }) => {
       <Stack sx={{
         position: "relative",
         minHeight: "800px",
-        backgroundImage: `url(${data && data.coverUrl})`,
+        backgroundImage: `url(${data.coverUrl ? data.coverUrl : defaultBgImg})`,
         backgroundSize: "cover",
       }}>
         <Box className={styles.overlay}></Box>

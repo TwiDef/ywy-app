@@ -27,7 +27,7 @@ const StaffList = ({ id }) => {
             alt={actor && actor.posterUrl} />
           <Typography
             sx={{ mt: 1, fontSize: 16, textAlign: "center", lineHeight: 1 }}>
-            {actor && actor.nameRu}
+            {actor && (actor.nameRu ? actor.nameRu : actor.nameEn)}
           </Typography>
         </Stack>
       </Link>

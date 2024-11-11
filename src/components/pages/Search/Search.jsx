@@ -12,11 +12,10 @@ import Loader from '../../ui/Loader';
 
 import styles from './Search.module.css';
 
-
 const Search = () => {
   const dispatch = useDispatch()
   const { order, type, page, keyword } = useSelector(state => state.query)
-  const [inputValue, setInputValue] = React.useState("")
+  const [inputValue, setInputValue] = React.useState(keyword)
 
   const { data, isFetching, isError } = useGetFilmsQuery({
     type,
