@@ -36,6 +36,12 @@ export const kinopoiskApi = createApi({
       query: ({ id }) => {
         return `v1/staff?filmId=${id}`
       }
+    }),
+
+    getFilmImages: builder.query({
+      query: ({ id, type }) => {
+        return `v2.2/films/${id}/images?type=${type}`
+      }
     })
   })
 })
@@ -44,5 +50,6 @@ export const {
   useGetFilmCollectionQuery,
   useGetFilmsQuery,
   useGetFilmQuery,
-  useGetStaffQuery
+  useGetStaffQuery,
+  useGetFilmImagesQuery
 } = kinopoiskApi

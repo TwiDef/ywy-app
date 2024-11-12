@@ -7,6 +7,7 @@ import Loader from './../../ui/Loader';
 import ErrorMessage from './../../ui/ErrorMessage';
 import MoviePreview from '../../ui/MoviePreview';
 import StaffList from '../../ui/StaffList/StaffList';
+import ScreenshotCarousel from '../../ui/ScreenshotCarousel';
 
 const MovieDetail = () => {
   const params = useParams()
@@ -20,6 +21,7 @@ const MovieDetail = () => {
     <Stack className="movie-detail-wrapper">
       <MoviePreview data={data && data} />
       <StaffList id={id} />
+      <ScreenshotCarousel id={id} />
       <Box style={{ height: "300px", border: "1px solid #fff", color: "#fff" }}>video</Box>
     </Stack >
 
