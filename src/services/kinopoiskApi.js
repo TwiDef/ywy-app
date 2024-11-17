@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { KINOPOISK_KEY } from './../KINOPOISK_KEY';
+/* import { KINOPOISK_KEY } from './../KINOPOISK_KEY'; */
 
 export const kinopoiskApi = createApi({
   reducerPath: 'kinopoiskApi',
@@ -8,7 +8,8 @@ export const kinopoiskApi = createApi({
 
     prepareHeaders: (headers) => {
       headers.set('Content-Type', 'application/json')
-      headers.set('X-API-KEY', KINOPOISK_KEY)
+      /* headers.set('X-API-KEY', KINOPOISK_KEY) */
+      headers.set('X-API-KEY', process.env.REACT_APP_KINOPOISK_KEY)
       return headers
     }
   }),
