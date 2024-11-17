@@ -1,3 +1,7 @@
+.screenshot-carousel .bear-react-carousel__container {
+    align-items: center;
+}
+
 .bear-react-carousel__nav-button {
     background-color: #161616;
 }

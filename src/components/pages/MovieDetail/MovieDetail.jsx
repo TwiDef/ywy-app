@@ -1,7 +1,8 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useGetFilmQuery } from '../../../services/kinopoiskApi';
-import { Box, Stack } from '@mui/material';
+import { Box, Stack, Typography } from '@mui/material';
+import { theme } from '../../../theme';
 
 import Loader from './../../ui/Loader';
 import ErrorMessage from './../../ui/ErrorMessage';
@@ -9,6 +10,7 @@ import MoviePreview from '../../ui/MoviePreview';
 import StaffList from '../../ui/StaffList/StaffList';
 import ScreenshotCarousel from '../../ui/ScreenshotCarousel';
 import GenreList from '../../ui/GenreList/GenreList';
+import KinoboxPlayer from '../../ui/KinoboxPlayer/KinoboxPlayer';
 
 const MovieDetail = () => {
   const params = useParams()
@@ -24,7 +26,23 @@ const MovieDetail = () => {
       <StaffList id={id} />
       <ScreenshotCarousel id={id} />
       <GenreList genres={data && data.genres} />
-      <Box style={{ height: "300px", border: "1px solid #fff", color: "#fff" }}>video</Box>
+      <Box sx={{ mt: 10 }}>
+        <Typography
+          variant="h5"
+          sx={{
+            textAlign: "center",
+            color: theme.white,
+            mb: 2,
+            fontSize: { xs: 30, md: 40 },
+            textShadow: `3px 3px 3px ${theme.black}`
+          }}>
+          Смотреть онлайн
+        </Typography>
+        <KinoboxPlayer
+          kinopoiskId={data && data.kinopoiskId}
+          imdbId={data && data.imdbId}
+          poster={data && data.posterUrl} />
+      </Box>
     </Stack >
 
   );
