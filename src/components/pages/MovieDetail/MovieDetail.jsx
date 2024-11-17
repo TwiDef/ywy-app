@@ -8,6 +8,7 @@ import ErrorMessage from './../../ui/ErrorMessage';
 import MoviePreview from '../../ui/MoviePreview';
 import StaffList from '../../ui/StaffList/StaffList';
 import ScreenshotCarousel from '../../ui/ScreenshotCarousel';
+import GenreList from '../../ui/GenreList/GenreList';
 
 const MovieDetail = () => {
   const params = useParams()
@@ -22,6 +23,7 @@ const MovieDetail = () => {
       <MoviePreview data={data && data} />
       <StaffList id={id} />
       <ScreenshotCarousel id={id} />
+      <GenreList genres={data && data.genres} />
       <Box style={{ height: "300px", border: "1px solid #fff", color: "#fff" }}>video</Box>
     </Stack >
 
