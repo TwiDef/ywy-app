@@ -43,6 +43,12 @@ export const kinopoiskApi = createApi({
       query: ({ id, type }) => {
         return `v2.2/films/${id}/images?type=${type}`
       }
+    }),
+
+    getQuotaInfo: builder.query({
+      query: () => {
+        return `v1/api_keys/${process.env.REACT_APP_KINOPOISK_KEY}`
+      }
     })
   })
 })
@@ -52,5 +58,6 @@ export const {
   useGetFilmsQuery,
   useGetFilmQuery,
   useGetStaffQuery,
-  useGetFilmImagesQuery
+  useGetFilmImagesQuery,
+  useGetQuotaInfoQuery
 } = kinopoiskApi
