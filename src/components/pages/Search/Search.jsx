@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Stack, TextField, Button } from '@mui/material';
+import { Stack, TextField, Button, Typography } from '@mui/material';
 import { useGetFilmsQuery } from '../../../services/kinopoiskApi';
 import { onChangeKeyword } from '../../../redux/slices/querySlice';
 import { theme } from '../../../theme';
@@ -74,7 +74,11 @@ const Search = () => {
         </Button>
       </Stack>
       <>
-        {isError || (data && data.items.length === 0) ? "nichego nety" :
+        {isError || (data && data.items.length === 0) ?
+          <Typography
+            sx={{ pt: 4, textAlign: "center", color: theme.white }}
+            variant="h5"
+          >Извините, но поиск не дал результатов</Typography> :
           isFetching ? <Loader /> : data && <MovieList data={data} title="Поиск по названию фильма" />}
       </>
     </Stack>

@@ -23,7 +23,7 @@ const ProgressWithLabel = (props) => {
           component="div"
           sx={{ color: theme.white }}
         >
-          {`${Math.round(props.value)}%`}
+          {props.value ? `${Math.round(props.value)}%` : "0%"}
         </Typography>
       </Box>
     </Box>
