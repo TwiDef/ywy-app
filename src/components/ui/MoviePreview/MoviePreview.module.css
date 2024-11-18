@@ -7,3 +7,9 @@
     backdrop-filter: blur(3px);
     background: radial-gradient(50.37% 47.04% at 50.88% 44.96%, rgba(6, 6, 30, 0) 0%, #100e19 100%);
 }
+
+.addToFavoritesBtn {
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+}
