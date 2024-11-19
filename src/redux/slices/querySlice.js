@@ -6,6 +6,7 @@ const initialState = {
   order: "NUM_VOTE",
   type: "",
   page: 1,
+  dailyQuotaLimitOut: false
 }
 
 export const querySlice = createSlice({
@@ -17,10 +18,13 @@ export const querySlice = createSlice({
     },
     onChangeKeyword: (state, action) => {
       state.keyword = action.payload
+    },
+    switchDailyQuotaStatus: (state, action) => {
+      state.dailyQuotaLimitOut = action.payload
     }
   },
 })
 
-export const { onChangePage, onChangeKeyword } = querySlice.actions
+export const { onChangePage, onChangeKeyword, switchDailyQuotaStatus } = querySlice.actions
 
 export default querySlice.reducer

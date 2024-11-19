@@ -1,13 +1,21 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { useGetQuotaInfoQuery } from '../../../services/kinopoiskApi';
+import { switchDailyQuotaStatus } from '../../../redux/slices/querySlice';
 import { Stack, Typography, Divider, Link } from '@mui/material';
 import { theme } from '../../../theme';
-import { useGetQuotaInfoQuery } from '../../../services/kinopoiskApi';
 
 import DailyQuota from '../DailyQuota/DailyQuota';
 
 const Footer = () => {
-
+  const dispatch = useDispatch()
   const { data } = useGetQuotaInfoQuery()
+
+  React.useEffect(() => {
+    if (data && data.dailyQuota.used > 500) {
+      dispatch(switchDailyQuotaStatus(true))
+    }
+  }, [data, dispatch])
 
   return (
     <Stack

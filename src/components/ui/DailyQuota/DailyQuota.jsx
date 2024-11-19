@@ -15,7 +15,7 @@ const DailyQuota = ({ value }) => {
   return (
     <Box sx={{ mt: { xs: 2, md: 0 }, cursor: "default" }}>
       <Tooltip
-        title="dailyQuota">
+        title="dailyQuotaLimit">
         <div>
           <ProgressWithLabel
             className="daily-quota" variant="determinate" value={progress} />
