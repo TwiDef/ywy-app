@@ -39,40 +39,44 @@ const SimilarsFilmList = ({ id }) => {
 
   return (
     <>
-      <Typography
-        sx={{
-          textAlign: { xs: "center", md: "unset" },
-          color: theme.white,
-          mb: 2,
-          fontSize: { xs: 30, md: 40 },
-          textShadow: `3px 3px 3px ${theme.black}`
-        }}>Похожие кинокартины
-      </Typography>
-      <BearCarousel
-        className="mini-carousel"
-        data={films}
-        width="100%"
-        isEnableNavButton={true}
-        isEnableAutoPlay={true}
-        spaceBetween={30}
-        isEnableLoop={true}
-        slidesPerView={5}
-        isCenteredSlides={true}
-        breakpoints={{
-          1200: {
-            slidesPerView: 5
-          },
-          768: {
-            slidesPerView: 3
-          },
-          640: {
-            slidesPerView: 3
-          },
-          340: {
-            slidesPerView: 2
-          }
-        }}
-      />
+      {data.items.length !== 0 &&
+        <>
+          <Typography
+            sx={{
+              textAlign: { xs: "center", md: "unset" },
+              color: theme.white,
+              mb: 2,
+              fontSize: { xs: 30, md: 40 },
+              textShadow: `3px 3px 3px ${theme.black}`
+            }}>Смотрите также
+          </Typography>
+          <BearCarousel
+            className="mini-carousel"
+            data={films}
+            width="100%"
+            isEnableNavButton={true}
+            isEnableAutoPlay={true}
+            spaceBetween={30}
+            isEnableLoop={true}
+            slidesPerView={5}
+            isCenteredSlides={true}
+            breakpoints={{
+              1200: {
+                slidesPerView: 5
+              },
+              768: {
+                slidesPerView: 3
+              },
+              640: {
+                slidesPerView: 3
+              },
+              340: {
+                slidesPerView: 2
+              }
+            }}
+          />
+        </>
+      }
     </>
   );
 };

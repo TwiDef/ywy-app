@@ -33,7 +33,7 @@ const MoviePreview = ({ data }) => {
 
   React.useEffect(() => {
     window.scrollTo(0, 0)
-  }, [])
+  }, [data])
 
   return (
     <Box sx={{ pt: 2 }}>

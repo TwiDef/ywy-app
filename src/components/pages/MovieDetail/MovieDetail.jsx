@@ -63,8 +63,7 @@ const MovieDetail = () => {
           <SimilarsFilmList id={id} />
         </Box>
       </Box>
-    </Stack >
-
+    </Stack>
   );
 };
 
