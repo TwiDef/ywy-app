@@ -13,6 +13,7 @@ import MyYwy from "./pages/MyYwy";
 import Search from "./pages/Search";
 import MovieDetail from "./pages/MovieDetail/MovieDetail";
 import ErrorPage from "./pages/ErrorPage/ErrorPage";
+import ActorDetail from "./pages/ActorDetail/ActorDetail";
 
 function App() {
 
@@ -40,6 +41,10 @@ function App() {
         {
           path: "/movie/:id",
           element: <MovieDetail />
+        },
+        {
+          path: "/staff/:id",
+          element: <ActorDetail />
         },
         {
           path: "/search",
