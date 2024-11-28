@@ -83,7 +83,7 @@ const MoviePreview = ({ data }) => {
                   fontSize: { xs: "1.7rem", md: "2.6rem" },
                   textShadow: `3px 3px 3px ${theme.black}`
                 }}
-              >{data && data.nameRu}
+              >{data && (data.nameRu ? data.nameRu : data.nameOriginal)}
               </Typography>
             </Stack>
             <Stack sx={{
@@ -97,13 +97,13 @@ const MoviePreview = ({ data }) => {
               <Typography sx={{
                 fontSize: { xs: 16, md: 24 }, textShadow: `3px 3px 3px ${theme.black}`
               }}>
-                {data && data.year}
+                {data && (data.year ? data.year : "uknown year")}
               </Typography><span>|</span>
               <Typography sx={{
                 fontSize: { xs: 16, md: 24 },
                 textShadow: `3px 3px 3px ${theme.black}`
               }}>
-                {data && data.filmLength} мин
+                {data && (data.filmLength ? data.filmLength : "?")} мин
               </Typography><span>|</span>
               <Typography sx={{
                 fontSize: { xs: 16, md: 24 },
@@ -116,7 +116,7 @@ const MoviePreview = ({ data }) => {
             </Stack>
             <Typography
               sx={{ mt: 2, lineHeight: 1.2, textShadow: `3px 3px 3px ${theme.black}` }}>
-              {data && data.description}
+              {data && (data.description ? data.description : "описание фильма отсутствует")}
             </Typography>
             <Stack
               sx={{

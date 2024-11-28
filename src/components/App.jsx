@@ -1,6 +1,7 @@
 import React from "react";
 import {
-  createBrowserRouter,
+  /* createBrowserRouter, */
+  createHashRouter,
   RouterProvider,
 } from "react-router-dom";
 import { filmCollectionType, NAVBAR_LIST } from "../constants";
@@ -17,7 +18,7 @@ import ActorDetail from "./pages/ActorDetail/ActorDetail";
 
 function App() {
 
-  const router = createBrowserRouter([
+  const router = createHashRouter([
     {
       path: "/",
       element: <Layout />,

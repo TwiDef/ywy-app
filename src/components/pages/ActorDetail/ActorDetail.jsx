@@ -4,7 +4,8 @@ import { useGetSingleStaffQuery } from '../../../services/kinopoiskApi';
 
 import Loader from '../../ui/Loader';
 import ErrorMessage from '../../ui/ErrorMessage';
-import ActorPreview from '../../ui/ActorPreview/ActorPreview';
+import ActorPreview from '../../ui/ActorPreview';
+import ActorFilmList from '../../ui/ActorFilmList';
 
 const ActorDetail = () => {
   const params = useParams()
@@ -15,7 +16,10 @@ const ActorDetail = () => {
   if (isError) return <ErrorMessage />
 
   return (
-    <ActorPreview data={data && data} />
+    <>
+      <ActorPreview data={data && data} />
+      {data && data.films && <ActorFilmList films={data && data.films} />}
+    </>
   );
 };
 
